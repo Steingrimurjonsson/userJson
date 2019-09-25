@@ -7,6 +7,7 @@ const table = document.querySelector("#table");
 const but = document.querySelector("#but");
 const but2 = document.querySelector("#but2");
 const but3 = document.querySelector("#but3");
+const but4 = document.querySelector("#but4");
 
 //add user
 const ageid = document.querySelector("#ageid");
@@ -16,6 +17,12 @@ const emailid = document.querySelector("#emailid");
 
 
 
+function userToTableS(item) {
+    var tableData = item.map(x => "<tr><td>" + x.id + "</td><td><p>" + x.sId + "</p></td><td>" + x.name + "</td><td>" + x.color + "</td></tr>");
+    tableData.unshift("<table class=\"table\"><tr><th>ID</th><th>student id</th><th>Name</th><th>color</th></tr>");
+    tableData.push("</table>");
+    return tableData.join('');
+}
 
 
 function userToTable(item) {
@@ -95,3 +102,21 @@ but3.onclick = function (e) {
     console.log(data);
 
 };
+
+
+
+
+but4.onclick = function (e) {
+    e.preventDefault();
+
+    let url = "https://ruffsacks.com/CA1/api/student/all";
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            studentID.innerHTML = userToTableS(data);
+        });
+    console.log(data);
+
+};
+
+
