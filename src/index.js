@@ -106,17 +106,6 @@ but3.onclick = function (e) {
 
 
 
-but4.onclick = function (e) {
-    e.preventDefault();
 
-    let url = "https://ruffsacks.com/CA1/api/student/all";
-    fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            studentID.innerHTML = userToTableS(data);
-        });
-    console.log(data);
-
-};
 
 
